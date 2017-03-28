@@ -26,7 +26,7 @@ define('MAX_FILE_SIZE', "2097152");
 	}
 
 	if (empty($_FILES['pic']['size'])) {
-		$errors[] - "file size exceeds maximum. maximum:". MAX_FILE_SIZE;
+		$errors[] = "file size exceeds maximum. maximum:". MAX_FILE_SIZE;
 	}
 
 	if (empty($errors)) {
