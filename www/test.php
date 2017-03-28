@@ -33,7 +33,7 @@ $ext = ["image/jpg", "image/jpeg", "image/png"];
 		$errors[] = "file size exceeds maximum. maximum:". MAX_FILE_SIZE;
 	}
 	# check extension
-	if (!in_array($_FILES, ['pic']['type'], $ext)) {
+	if (!in_array($_FILES['pic']['type'], $ext)) {
 		$errors[] = "invalid file type";
 	}
 
@@ -55,7 +55,7 @@ $ext = ["image/jpg", "image/jpeg", "image/png"];
 	<input type="submit" name="save">
 
 	</form>
-	
+
 
 
 
