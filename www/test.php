@@ -45,9 +45,11 @@ $ext = ["image/jpg", "image/jpeg", "image/png"];
 	$filename = $rnd.$strip_name;
 	$destination = 'uploads/'.$filename;
 
-	if (!move_uploaded_file($_FILES['pic']['tmp_name'], $destination)) {
+	if(!move_uploaded_file($_FILES['pic']['tmp_name'], $destination)){
 		$errors[] = "file upload failed";
 	}
+
+	
 
 	if (empty($errors)) {
 		echo "done";
