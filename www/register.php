@@ -2,7 +2,7 @@
 	
 	# include header
 	include 'includes/header.php';
-	include 'includes/footer.php';
+	
 
 
  if (array_key_exists('register', $_POST)) {
@@ -55,3 +55,7 @@
 
 		<h4 class="jumpto">Have an account? <a href="login.php">login</a></h4>
 	</div>
+<?php	
+# include footer
+include 'includes/footer.php';	
+?>
