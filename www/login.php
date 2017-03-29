@@ -1,6 +1,6 @@
 <?php
 	include 'includes/loginheader.php';
-	include 'incudes/loginfooter.php';
+	include 'includes/loginfooter.php';
 
 ?>
 <div class="mast">
