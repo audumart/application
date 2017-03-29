@@ -15,7 +15,11 @@
  	}
  	# validate last name
  	if (empty($_POST['lname'])) {
- 		$errors[] = "please enter a first name";
+ 		$errors[] = "please enter a last name";
+ 	}
+ 	# validate email address
+ 	if (empty($_POST['email'])) {
+ 		$errors[] = "please enter an email address";
  	}
  
  if (empty($errors)) {
