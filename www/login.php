@@ -3,10 +3,7 @@
 	include 'includes/loginfooter.php';
 
 ?>
-<div class="mast">
-			<h1>T<span>SSB</span></h1>
-		</div>
-	</section>
+
 	
 	<div class="wrapper">
 		<h1 id="register-label">Admin Login</h1>
