@@ -12,36 +12,34 @@
 
  	# validate first name
  	if (empty($_POST['fname'])) {
- 		$errors[] = "please enter a first name";
+ 		$errors['fname'] = "please enter a first name";
  	}
  	# validate last name
  	if (empty($_POST['lname'])) {
- 		$errors[] = "please enter a last name";
+ 		$errors['lname'] = "please enter a last name";
  	}
  	# validate email address
  	if (empty($_POST['email'])) {
- 		$errors[] = "please enter an email address";
+ 		$errors['email'] = "please enter an email address";
 
  	}
  	# validate password
  	if (empty($_POST['password'])) {
- 		$errors[] = "please enter a password";
+ 		$errors['password'] = "please enter a password";
 
  	}
  	# confirm password
- 	if (empty($_POST['pword'])) {
- 		$errors[] = "please confirm your password";
+ 	if ($_POST['pword'] != $_POST['pword']) {
+ 		$errors['pword'] = "passwords do not match";
 
  	}
 
  
  if (empty($errors)) {
  	// do database stuff
- } else {
- 	foreach ($errors as $err) {
- 		echo "<p>$err</p>";
- 	}
- }
+		 } 
+
+ 	
 }
 
 ?>
