@@ -9,6 +9,7 @@
  	# cache errors
  	$errors[] = "";
 
+
  	# validate first name
  	if (empty($_POST['fname'])) {
  		$errors[] = "please enter a first name";
@@ -20,7 +21,19 @@
  	# validate email address
  	if (empty($_POST['email'])) {
  		$errors[] = "please enter an email address";
+
  	}
+ 	# validate password
+ 	if (empty($_POST['password'])) {
+ 		$errors[] = "please enter a password";
+
+ 	}
+ 	# confirm password
+ 	if (empty($_POST['pword'])) {
+ 		$errors[] = "please confirm your password";
+
+ 	}
+
  
  if (empty($errors)) {
  	// do database stuff
@@ -30,6 +43,7 @@
  	}
  }
 }
+
 ?>
 <div class="wrapper">
 		<h1 id="register-label">Admin Register</h1>
