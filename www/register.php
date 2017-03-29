@@ -39,7 +39,7 @@
  	// do database stuff
  } else {
  	foreach ($errors as $err) {
- 		echo $err;
+ 		echo "<p>$err</p>";
  	}
  }
 }
