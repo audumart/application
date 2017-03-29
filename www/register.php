@@ -29,7 +29,7 @@
 
  	}
  	# confirm password
- 	if ($_POST['pword'] != $_POST['pword']) {
+ 	if ($_POST['pword'] != $_POST['password']) {
  		$errors['pword'] = "passwords do not match";
 
  	}
