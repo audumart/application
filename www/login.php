@@ -1,3 +1,7 @@
+<?php
+	include 'includes/loginheader.php';
+
+?>
 <div class="mast">
 			<h1>T<span>SSB</span></h1>
 		</div>
