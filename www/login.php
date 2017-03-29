@@ -1,5 +1,10 @@
 <?php
+	# title
+	$page_title = "Register";
+
+	# include header
 	include 'includes/loginheader.php';
+	# include footer
 	include 'includes/loginfooter.php';
 
 ?>
