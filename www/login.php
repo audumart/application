@@ -1,6 +1,6 @@
 <?php
 	# title
-	$page_title = "Register";
+	$page_title = "Login";
 
 	# include header
 	include 'includes/loginheader.php';
