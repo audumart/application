@@ -13,6 +13,10 @@
  	if (empty($_POST['fname'])) {
  		$errors[] = "please enter a first name";
  	}
+ 	# validate last name
+ 	if (empty($_POST['lname'])) {
+ 		$errors[] = "please enter a first name";
+ 	}
  
  if (empty($errors)) {
  	// do database stuff
