@@ -10,7 +10,7 @@
 
  if (array_key_exists('register', $_POST)) {
  	# cache errors
- 	$errors[] = "";
+ 	$errors= [];
 
 
  	# validate first name
@@ -48,9 +48,8 @@
  	$hash = password_hash($clean['password'], PASSWORD_BCRYPT);
 	
  	# insert data
- 	$stmt = $conn->prepare("INSERT INTO admin(firstname,lastname,email,hash) VALUES(:fn, :ln, :e, :h)");
-
- 	# bind params 
+ 	$stmt = $conn->prepare("INSERT INTO admin(firstname, lastname, email, hash) VALUES(:fn, :ln, :e, :h)");
+ 	# bind params
  	$data = [
 
  	':fn' => $clean['fname'],
@@ -59,6 +58,7 @@
  	':h' => $hash
 
  	];
+
  	$stmt->execute($data);
 
 		 } 
