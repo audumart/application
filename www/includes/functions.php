@@ -9,9 +9,9 @@
  	# bind params
  	$data = [
 
- 	':fn' => $clean['fname'],
- 	':ln' => $clean['lname'],
- 	':e' => $clean['email'],
+ 	':fn' => $input['fname'],
+ 	':ln' => $input['lname'],
+ 	':e' => $input['email'],
  	':h' => $hash
 
  	];
