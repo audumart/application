@@ -2,6 +2,9 @@
 	
 	# include header
 	include 'includes/header.php';
+
+	# include db connection
+	include 'includes/db.php';
 	
 
 
