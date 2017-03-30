@@ -1,4 +1,7 @@
 <?php
+
+	# include functions
+	include 'includes/functions.php';
 	
 	# include header
 	include 'includes/header.php';
