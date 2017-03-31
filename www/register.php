@@ -10,10 +10,11 @@
 	include 'includes/db.php';
 	
 
+	$errors= [];
 
  if (array_key_exists('register', $_POST)) {
  	# cache errors
- 	$errors= [];
+ 	
 
 
  	# validate first name
@@ -70,7 +71,8 @@
 		<form id="register"  action ="register.php" method ="POST">
 			<div>
 			<?php
-			if (isset($errors['fname'])) { echo '<span class="err">'.$errors['fname'].'</span>'; }
+			$display = displayErrors($errors,'fname');
+			echo $display;
 			?>
 				<label>first name:</label>
 				<input type="text" name="fname" placeholder="first name">
