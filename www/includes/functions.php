@@ -77,6 +77,29 @@
 			}	
 		}
 	}
+	function fileUpload($up){
 
+		$ext = ["image/jpg", "image/jpeg", "image/png"];
+
+		if (!in_array($_FILES['pic']['type'], $ext)) {
+		$errors[] = "invalid file type";
+	}
+
+	# generate random number to append
+	$rnd = rand(0000000000, 9999999999);
+
+	# strip filename for spaces
+	$strip_name = str_replace(" ", "_", $_FILES['pic']['name']);
+
+	$filename = $rnd.$strip_name;
+	$destination = 'uploads/'.$filename;
+
+	if(!move_uploaded_file($_FILES['pic']['tmp_name'], $destination)){
+		$errors[] = "file upload failed";
+	}
+
+
+
+	}
 
 ?>
