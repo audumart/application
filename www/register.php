@@ -79,7 +79,8 @@
 			</div>
 			<div>
 			<?php
-			if (isset($errors['lname'])) { echo '<span class="err">'.$errors['lname'].'</span>'; }
+			$display = displayErrors($errors,'lname');
+			echo $display;
 			?>
 				<label>last name:</label>	
 				<input type="text" name="lname" placeholder="last name">
@@ -87,14 +88,16 @@
 
 			<div>
 			<?php
-			if (isset($errors['email'])) { echo '<span class="err">'.$errors['email'].'</span>'; }
+			$display = displayErrors($errors,'email');
+			echo $display;
 			?>
 				<label>email:</label>
 				<input type="text" name="email" placeholder="email">
 			</div>
 			<div>
 			<?php
-			if (isset($errors['password'])) { echo '<span class="err">'.$errors['password'].'</span>'; }
+			$display = displayErrors($errors,'password');
+			echo $display;
 			?>
 				<label>password:</label>
 				<input type="password" name="password" placeholder="password">
