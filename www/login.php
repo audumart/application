@@ -1,12 +1,44 @@
 <?php
+	
+	session_start();
+
 	# title
 	$page_title = "Login";
+
+	#include function
+	include 'includes/functions.php';
+
+	#include db
+	include 'includes/db.php';
 
 	# include header
 	include 'includes/loginheader.php';
 	# include footer
 	include 'includes/loginfooter.php';
 
+	
+
+	if (array_key_exists('register', $_POST)) {
+		# error caching
+		$errors = [];
+		
+
+		if (empty('email')) {
+			$errors['email'] = "please enter your email";
+		}
+		if (empty('password')) {
+			$errors['password'] = "please enter your password";
+		}
+
+		if (empty($errors)) {
+			# select from db
+
+			#remove unwanted vakues from the array $_POST
+			$clean = array_map('trim', $_POST);
+
+			adminLogin($conn, $clean);
+		}
+	}
 ?>
 
 	
@@ -15,10 +47,12 @@
 		<hr>
 		<form id="register"  action ="login.php" method ="POST">
 			<div>
+			
 				<label>email:</label>
 				<input type="text" name="email" placeholder="email">
 			</div>
 			<div>
+			
 				<label>password:</label>
 				<input type="password" name="password" placeholder="password">
 			</div>
