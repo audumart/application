@@ -4,6 +4,8 @@
 define('DBUSER', 'root');
 define('DBPASS', 'root');
 
+
+
 try{
 	# prepare a pdo instance
 	$conn = new PDO('mysql:host=localhost;dbname='.DBNAME, DBUSER, DBPASS);
@@ -15,6 +17,9 @@ try{
 }*/
 # max file size
 define('MAX_FILE_SIZE', "2097152");
+
+# include function
+include 'includes/functions.php';
 
 # allowed extensions...
 $ext = ["image/jpg", "image/jpeg", "image/png"];
