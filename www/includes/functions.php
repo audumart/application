@@ -61,7 +61,7 @@
 		$count = $stmt->rowCount();
 
 		if ($count == 1) {
-			$row = $statement->fetch(PDO::FETCH_ASSOC);
+			$row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 			if (password_verify($enter['password'], $row['hash'])) {
 				$_SESSION['id'] = $row['admin'];
