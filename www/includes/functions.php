@@ -43,7 +43,7 @@
 
 		if (isset($open[$name])) {
 			
-			$result = '<span class="err">'.$open[$name].'</span'>;
+			$result = '<span class="err">'.$open[$name].'</span>';
 		}
 
 		return $result;
