@@ -94,10 +94,18 @@
 	$filename = $rnd.$strip_name;
 	$destination = 'uploads/'.$filename;
 
+	# check file size...
+	if ($_FILES['pic']['size'] > MAX_FILE_SIZE) {
+		$errors[] = "file size exceeds maximum. maximum:". MAX_FILE_SIZE;
+	}
+
 	if(!move_uploaded_file($_FILES['pic']['tmp_name'], $destination)){
 		$errors[] = "file upload failed";
 	}
-
+	# check extension
+	if (!in_array($_FILES['pic']['type'], $ext)) {
+		$errors[] = "invalid file type";
+	}
 
 
 	}
