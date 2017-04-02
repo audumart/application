@@ -118,4 +118,22 @@
 		$stmt->execute();
 	}
 
+	function showCategory($dbconn){
+		$stmt = $dbconn->prepare("SELECT * FROM category");
+		$stmt->execute();
+		$result = "";
+
+		while ($row = $stmt->prepare(PDO::FETCH_ASSOC)) {
+			$category_id = $row['cat'];
+			$category_name = $row['category_name'];
+
+			$result .="<tr>";
+			$result .="<td>".$cat."</td>";
+			$result .="<td>".$category_name."</td>";
+
+			$result .= "<td><a href='category.php?action=edit&cat=$cat&category_name=$category_name'>edit</a></td>";
+			$result .= "<td><a href='category.php?action=delete&cat=$cat'>delete</a><td>";
+		}
+	}
+
 ?>
