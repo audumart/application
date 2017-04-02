@@ -24,12 +24,7 @@
 
 		
 
-		<div class="paginated">
-			<a href="#">1</a>
-			<a href="#">2</a>
-			<span>3</span>
-		</div>
-	</div>
+		
 	<?php
 	include 'includes/footer.php';
 
