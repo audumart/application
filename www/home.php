@@ -9,8 +9,6 @@
 
 	include 'includes/view.php';
 
-	include 'includes/header.php';
-
 
 
 
@@ -62,6 +60,10 @@
 			<a href="#">2</a>
 		</div>
 	</div>
+	<?php
+	include 'includes/footer.php';
+
+	?>
 
 </body>
 </html>
