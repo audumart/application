@@ -12,63 +12,70 @@
 	$errors = [];
 
 	if (array_key_exists('enter', $_POST)) {
-		if (empty($_POST['cat'])) {
-			$errors['cat'] = "Enter Category name";
-		}
-	if (empty($errors)) {
-		// do database stuff
-
 		$clean = array_map('trim', $_POST);
-
 		insertCategory($conn, $clean);
-
-
-
+		}
+	if (array_key_exists('edit', $_POST)) {
+		$clean = array_map('trim', $_POST);
+		editCategory($conn, $clean);
 	}
-}
-
-
-
-
-
-
+	if (isset($_GET['success'])) {
+		echo $_GET['success'];
+	}
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Home</title>
-</head>
-<body>
 <div class="wrapper">
-		<div id="stream">
+		<div id="stream"><br/><br/>
+		<p> 
+		<?php
 
-		<form id="register" action="home.php" method="POST">
+		if (isset($_GET['action'])) {
+			if ($_GET['action'] = "edit") {
+				
+			
+		
 
-			<label>Categories: </label>
-			<input type="text" name="cat" placeholder="Enter Product Category">
 
-			<input type="submit" name="enter" value="Enter">
+
+		?>
+		<h3>Edit Category</h3>
+			<form id="register" method="POST" action="category.php">
+				<input type="text" name="category" placeholder="Category Name" value="<?php echo $_GET['cat'];   ?>" />
+				<input type="hidden" name="category_id" value="<?php echo $_GET['category_id'];  ?>">
+				<input type="submit" name="edit">
+			</form>
+			<?php
+		}
+	}
+
+	if (isset($_GET['act'])) {
+		if ($_GET['act'] = "delete") {
+			deleteCat($conn, $_GET['category_id']);
+		}
+	}
+
+			?>
+		<h3>Add Category</h3>
+		<form id="register" method="POST" action="category.php">
+			<input type="text" name="cat" placeholder="Category Name" />
+			<input type="submit" name="enter" value="Add">
 		</form>
-			<table id="tab">
-				<thead>
-					<tr>
-						<th>post title</th>
-						<th>post author</th>
-						<th>date created</th>
-						<th>edit</th>
-						<th>delete</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>the knowledge gap</td>
-						<td>maja</td>
-						<td>January, 10</td>
-						<td><a href="#">edit</a></td>
-						<td><a href="#">delete</a></td>
-					</tr>
-          		</tbody>
-			</table>
+		</p>
+	<hr>
+	<h3>Available Categories</h3>
+	<table id="tab">
+		<thead>
+			<tr>
+				<th>Category ID</th>
+				<th>Category Name</th>
+				<th>edit</th>
+				<th>delete</th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php  $view = showCategory($conn); echo $view; ?>
+		</tbody>
+	</table>
+		
 		</div>
 
 		<div class="paginated">
