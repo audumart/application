@@ -22,6 +22,8 @@
 
 		insertCategory($conn, $clean);
 
+
+
 	}
 }
 
@@ -41,8 +43,8 @@
 		<div id="stream">
 
 		<form id="register" action="home.php" method="POST">
-			
-			<label>Category: </label>
+
+			<label>Add Category: </label>
 			<input type="text" name="cat" placeholder="Enter Product Category">
 
 			<input type="submit" name="enter" value="Enter">
@@ -62,8 +64,8 @@
 						<td>the knowledge gap</td>
 						<td>maja</td>
 						<td>January, 10</td>
-						<td><a href="#">edit</a></td>
-						<td><a href="#">delete</a></td>
+						<td><a href="category.php">edit</a></td>
+						<td><a href="category.php">delete</a></td>
 					</tr>
           		</tbody>
 			</table>
