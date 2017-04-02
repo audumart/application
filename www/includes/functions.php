@@ -143,7 +143,7 @@
 	function editCategory($dbconn, $input){
 
 		$stmt = $dbconn->prepare("UPDATE category SET category_name = :c WHERE category_id = :ci");
-		$stmt->bindParam(":c", $input['cat']);
+		$stmt->bindParam(":c", $input['category_name']);
 		$stmt->bindParam(":ci", $input['category_id']);
 		$stmt->execute();
 		$success = "category edited!";
