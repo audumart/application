@@ -133,7 +133,29 @@
 
 			$result .= "<td><a href='category.php?action=edit&cat=$cat&category_name=$category_name'>edit</a></td>";
 			$result .= "<td><a href='category.php?action=delete&cat=$cat'>delete</a><td>";
+			$result .= "<tr>";
+
 		}
+		return $result;
+	}
+
+	function editCategory($dbconn, $input){
+
+		$stmt = $dbconn->prepare("UPDATE category SET category_name = :c WHERE category_id = :ci");
+		$stmt->bindParam(":c", $input['cat']);
+		$stmt->bindParam(":ci", $input['category_id']);
+		$stmt->execute();
+		$success = "category edited!";
+		header("Location:category.php?success=$success");
+	}
+
+	function deleteCat($dbconn, $del){
+
+		$stmt = $dbconn->prepare("DELETE FROM category WHERE category_id = :ci");
+		$stmt->bindParam(":ci", $del);
+		$stmt->execute();
+		$success = "category deleted!";
+		header("Location:category.php?success=$success");
 	}
 
 ?>
