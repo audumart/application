@@ -47,12 +47,6 @@
 		}
 	}
 
-	if (isset($_GET['act'])) {
-		if ($_GET['act'] = "delete") {
-			deleteCat($conn, $_GET['category_id']);
-		}
-	}
-
 			?>
 		<h3>Add Category</h3>
 		<form id="register" method="POST" action="category.php">
