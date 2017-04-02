@@ -122,17 +122,18 @@
 		$stmt = $dbconn->prepare("SELECT * FROM category");
 		$stmt->execute();
 		$result = "";
+		
 
-		while ($row = $stmt->prepare(PDO::FETCH_ASSOC)) {
-			$category_id = $row['cat'];
+		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+			$category_id = $row['category_id'];
 			$category_name = $row['category_name'];
 
 			$result .="<tr>";
-			$result .="<td>".$cat."</td>";
+			$result .="<td>".$category_id."</td>";
 			$result .="<td>".$category_name."</td>";
 
-			$result .= "<td><a href='category.php?action=edit&cat=$cat&category_name=$category_name'>edit</a></td>";
-			$result .= "<td><a href='category.php?action=delete&cat=$cat'>delete</a><td>";
+			$result .= "<td><a href='category.php?action=edit&cat=$category_id&category_name=$category_name'>edit</a></td>";
+			$result .= "<td><a href='category.php?action=delete&cat=$category_id'>delete</a><td>";
 			$result .= "<tr>";
 
 		}
