@@ -41,7 +41,7 @@
 			<form id="register" method="POST" action="category.php">
 				<input type="text" name="category" placeholder="Category Name" value="<?php echo $_GET['cat'];   ?>" />
 				<input type="hidden" name="category_id" value="<?php echo $_GET['category_id'];  ?>">
-				<input type="submit" name="edit">
+				<input type="submit" name="edit" value="Edit">
 			</form>
 			<?php
 		}
