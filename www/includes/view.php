@@ -10,9 +10,9 @@
 			<h1><a href="home.php">T<span>SSB</span> Home </a></h1>
 			<nav>
 				<ul class="clearfix">
-					<li><a href="category.php" class="selected">Add Category</a></li>
-					<li><a href="#">View Category</a></li>
-					<li><a href="#">Logout</a></li>
+					<li><a href="home.php" class="selected">Add Category</a></li>
+					<li><a href="category.php">View Category</a></li>
+					<li><a href="category.php">Logout</a></li>
 				</ul>
 			</nav>
 		</div>
