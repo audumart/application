@@ -27,7 +27,7 @@
 		<form id="register" action="home.php" method="POST">
 			
 			<label>Category: </label>
-			<input type="text" name="cat" value="Enter Product Category">
+			<input type="text" name="cat" placeholder="Enter Product Category">
 
 			<input type="submit" name="enter" value="Enter">
 		</form>
