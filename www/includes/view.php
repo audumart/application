@@ -10,6 +10,8 @@
 			<h1><a href="home.php">T<span>SSB</span> Home </a></h1>
 			<nav>
 				<ul class="clearfix">
+					<li><a href="#">Add Products</a></li>
+					<li><a href="#">View Products</a></li>
 					<li><a href="home.php" class="selected">Add Category</a></li>
 					<li><a href="category.php">View Category</a></li>
 					<li><a href="category.php">Logout</a></li>
