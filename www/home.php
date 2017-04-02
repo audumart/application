@@ -9,6 +9,22 @@
 
 	include 'includes/view.php';
 
+	$errors = [];
+
+	if (array_key_exists('enter', $_POST)) {
+		if (empty($_POST['cat'])) {
+			$errors['cat'] = "Enter Category name";
+		}
+	if (empty($errors)) {
+		// do database stuff
+
+		$clean = array_map('trim', $_POST);
+
+		insertCategory($conn, $clean);
+
+	}
+}
+
 
 
 
