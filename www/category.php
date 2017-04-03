@@ -33,9 +33,6 @@
 				
 			
 		
-
-
-
 		?>
 		<h3>Edit Category</h3>
 			<form id="register" method="POST" action="category.php">
