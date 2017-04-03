@@ -153,6 +153,7 @@
 	function deleteCat($dbconn, $del){
 
 		$stmt = $dbconn->prepare("DELETE FROM category WHERE category_id = :ci");
+		print_r($del); exit();
 		$stmt->bindParam(":ci", $del);
 		$stmt->execute();
 		$success = "category deleted!";
