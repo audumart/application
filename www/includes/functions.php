@@ -114,7 +114,7 @@
 
 		$stmt = $dbconn->prepare("INSERT INTO category(category_name) VALUES(:c)");
 
-		$stmt->bindParam(":c", $in['cat']);
+		$stmt->bindParam(":c", $in['category']);
 		$stmt->execute();
 	}
 
@@ -132,8 +132,8 @@
 			$result .="<td>".$category_id."</td>";
 			$result .="<td>".$category_name."</td>";
 
-			$result .= "<td><a href='category.php?action=edit&cat=$category_id&category_name=$category_name'>edit</a></td>";
-			$result .= "<td><a href='category.php?action=delete&cat=$category_id'>delete</a><td>";
+			$result .= "<td><a href='category.php?action=edit&category_id=$category_id&category_name=$category_name'>edit</a></td>";
+			$result .= "<td><a href='category.php?act=delete&category_id=$category_id'>delete</a><td>";
 			$result .= "<tr>";
 
 		}
@@ -153,7 +153,7 @@
 	function deleteCat($dbconn, $del){
 
 		$stmt = $dbconn->prepare("DELETE FROM category WHERE category_id = :ci");
-		print_r($del); exit();
+		
 		$stmt->bindParam(":ci", $del);
 		$stmt->execute();
 		$success = "category deleted!";
