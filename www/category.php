@@ -33,10 +33,13 @@
 				
 			
 		
+
+
+
 		?>
 		<h3>Edit Category</h3>
 			<form id="register" method="POST" action="category.php">
-				<input type="text" name="category" placeholder="Category Name" value="<?php echo $_GET['cat'];   ?>" />
+				<input type="text" name="category_name" placeholder="Category Name" value="<?php echo $_GET['category_name'];   ?>" />
 				<input type="hidden" name="category_id" value="<?php echo $_GET['category_id'];  ?>">
 				<input type="submit" name="edit" value="Edit">
 			</form>
@@ -44,10 +47,17 @@
 		}
 	}
 
+	if (isset($_GET['act'])) {
+		if ($_GET['act'] = "delete") {
+			deleteCat($conn, $_GET['category_id']);
+
+		}
+	}
+
 			?>
 		<h3>Add Category</h3>
 		<form id="register" method="POST" action="category.php">
-			<input type="text" name="cat" placeholder="Category Name" />
+			<input type="text" name="category" placeholder="Category Name" />
 			<input type="submit" name="enter" value="Add">
 		</form>
 		</p>
