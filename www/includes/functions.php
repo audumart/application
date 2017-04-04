@@ -243,7 +243,7 @@
 
 
 			$result .="<tr>";
-			$result .="<td>".$book_id."</td>";
+			
 			$result .="<td>".$title."</td>";
 			$result .="<td>".$author."</td>";
 			$result .="<td>".$price."</td>";
