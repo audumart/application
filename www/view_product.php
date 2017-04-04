@@ -60,7 +60,7 @@ session_start();
 	<table id="tab">
 		<thead>
 			<tr>
-				<th>Book ID</th>
+				
 				<th>Title</th>
 				<th>Author</th>
 				<th>Price</th>
