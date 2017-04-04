@@ -160,6 +160,77 @@
 		header("Location:category.php?success=$success");
 	}
 
-	
+	function addProduct($dbconn, $add){
+		define('MAX_FILE_SIZE', '2097152');
+
+		$ext = ["image/jpg", "image/jpeg", "image/png"];
+
+		$rnd = rand(0000000000, 9999999999);
+
+		$strip_name = str_replace(" ", " _ ", $_FILES['book']['name']);
+
+		$filename = $rnd.$strip_name;
+		$destination = 'uploads/'.$filename;
+
+			if (array_key_exists('save', $_POST)) {
+
+				$errors = [];
+
+			
+			if (empty($_FILES['book']['name'])) {
+				$errors[] = "Please choose a file";
+			}
+
+		if ($_FILES['book']['size'] > MAX_FILE_SIZE ) {
+			$errors[] = "file size exceeds maximum. maximum: ". MAX_FILE_SIZE;
+		}
+		if (!in_array($_FILES['book']['type'], $ext)) {
+			$errors[] = "invalid file type";
+		}
+		if (empty($errors)) {
+			if (!move_uploaded_file($_FILES['book']['tmp_name'], $destination)) {
+				$errors[] = "file upload failed";
+			}
+		echo "done";
+		}
+		else{
+			foreach ($errors as $err) {
+				echo $err. '</br>';
+			}
+		}
+	}
+		
+
+		
+		$state = $dbconn->prepare("SELECT category_id FROM category WHERE category_name = :c");
+		$state->bindParam(":c", $add['category']);
+		$state->execute();
+
+		$row = $state->fetch(PDO::FETCH_ASSOC);
+		$category_id = $row['category_id'];
+
+		$stmt = $dbconn->prepare("INSERT INTO products(title, author, category_id, price, year, isbn, file_path)
+											VALUES(:ti, :au, :ci, :pr, :yr, :is, :fi)");
+		$data = [
+
+			':ti' => $add['title'],
+			':au' => $add['author'],
+			'ci' => $category_id,
+			':pr' => $add['price'],
+			':yr' => $add['year'],
+			':is' => $add['isbn'],
+			':fi' => $destination
+
+				];
+
+			$stmt->execute($data);
+
+
+		
+		
+
+
+	}
+
 
 ?>

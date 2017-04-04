@@ -2,7 +2,7 @@
 
 	session_start();
 
-	$page_title = "Add Category";
+	$page_title = "Add Product";
 
 	include 'includes/db.php';
 
@@ -32,6 +32,8 @@
 		}
 		if (empty($errors)) {
 			$clean = array_map('trim', $_POST);
+
+			addProduct($conn, $clean);
 		}
 	}
 
