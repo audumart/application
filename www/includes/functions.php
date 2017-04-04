@@ -271,7 +271,7 @@
 		header("Location:view_product.php?success=$success");
 	}
 
-	function deleteCat($dbconn, $del){
+	function deleteProduct($dbconn, $del){
 
 		$stmt = $dbconn->prepare("DELETE FROM products WHERE book_id = :bi");
 		
