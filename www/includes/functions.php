@@ -224,12 +224,41 @@
 				];
 
 			$stmt->execute($data);
+	}
 
-
+	function showProduct($dbconn){
+		$stmt = $dbconn->prepare("SELECT * FROM products");
+		$stmt->execute();
+		$result = "";
 		
-		
+
+		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+			$book_id = $row['book_id'];
+			$title = $row['title'];
+			$author = $row['author'];
+			$price = $row['price'];
+			$year = $row['year'];
+			$isbn = $row['isbn'];
 
 
+
+			$result .="<tr>";
+			$result .="<td>".$book_id."</td>";
+			$result .="<td>".$title."</td>";
+			$result .="<td>".$author."</td>";
+			$result .="<td>".$price."</td>";
+			$result .="<td>".$year."</td>";
+			$result .="<td>".$isbn."</td>";
+			$result .='<td><img src="'.$row['file_path'].'" height="60" width="60"></td>';
+
+
+
+			$result .= "<td><a href='view_product.php?action=edit&book_id=$book_id&title=$title'>edit</a></td>";
+			$result .= "<td><a href='view_product.php?act=delete&book_id=$book_id'>delete</a><td>";
+			$result .= "<tr>";
+
+		}
+		return $result;
 	}
 
 
