@@ -249,7 +249,7 @@
 			$result .="<td>".$price."</td>";
 			$result .="<td>".$year."</td>";
 			$result .="<td>".$isbn."</td>";
-			$result .='<td><img src="'.$row['file_path'].'" height="60" width="60"></td>';
+			$result .='<td><img src="'.$row['file_path'].'" height="100" width="100"></td>';
 
 
 
