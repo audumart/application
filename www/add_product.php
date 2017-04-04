@@ -10,7 +10,30 @@
 
 	include 'includes/view.php';
 
+	$errors = [];
 
+	if (array_key_exists('save', $_POST)) {
+
+		
+		if (empty($_POST['title'])) {
+			$errors['title'] = "Enter Book Title";
+		}
+		if (empty($_POST['author'])) {
+			$errors['author'] = "Enter Book Author(s)";
+		}
+		if (empty($_POST['price'])) {
+			$errors['price'] = "Enter Book Price";
+		}
+		if (empty($_POST['year'])) {
+			$errors['year'] = "Enter Year of Publication";
+		}
+		if (empty($_POST['isbn'])) {
+			$errors['isbn'] = "Enter Book ISBN";
+		}
+		if (empty($errors)) {
+			$clean = array_map('trim', $_POST);
+		}
+	}
 
 
 
@@ -25,26 +48,46 @@
 				</div>
 
 				<div>
+				<?php
+			$display = displayErrors($errors,'title');
+			echo $display;
+			?>
 					<label>Book Title</label>
 					<input type="text" name="title" placeholder="Enter Book Title">
 				</div>
 
 				<div>
+				<?php
+			$display = displayErrors($errors,'author');
+			echo $display;
+			?>
 					<label>Author</label>
 					<input type="text" name="author" placeholder="Enter Book Author(s)">
 				</div>
 
 				<div>
+				<?php
+			$display = displayErrors($errors,'price');
+			echo $display;
+			?>
 					<label>Price</label>
 					<input type="text" name="price" placeholder="Enter Book price">
 				</div>
 
 				<div>
+				<?php
+			$display = displayErrors($errors,'year');
+			echo $display;
+			?>
 					<label>Year Of Publication</label>
 					<input type="text" name="year" placeholder="Enter Year Of Publication">
 				</div>
 
 				<div>
+				<?php
+			$display = displayErrors($errors,'isbn');
+			echo $display;
+			?>
 					<label>ISBN</label>
 					<input type="text" name="isbn" placeholder="Enter Book ISBN">
 				</div>
