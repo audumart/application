@@ -261,5 +261,15 @@
 		return $result;
 	}
 
+	function editProduct($dbconn, $input){
+
+		$stmt = $dbconn->prepare("UPDATE products SET title= :ti WHERE book_id = :bi");
+		$stmt->bindParam(":ti", $input['title']);
+		$stmt->bindParam(":bi", $input['book_id']);
+		$stmt->execute();
+		$success = "product edited!";
+		header("Location:view_product.php?success=$success");
+	}
+
 
 ?>
