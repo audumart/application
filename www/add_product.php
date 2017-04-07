@@ -2,6 +2,10 @@
 
 	session_start();
 
+	$flag = array("trending" , "recently viewed", "top selling");
+
+
+
 	$page_title = "Add Product";
 
 	include 'includes/db.php';
@@ -104,6 +108,19 @@
 						while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
 						<option value="<?php echo $row['category_name']?>"> <?php echo $row['category_name'] ?> </option>
 						<?php } ?>
+					</select>
+				</div>
+					<div>
+				<div>
+					<label>Book Status</label>
+					<select name="flag"> 
+					<option> Status 
+					<?php foreach( $flag as $flag){?>
+        				<option value="<?php echo $flag?>"><?php echo $flag ?></option>
+                        <?php } ?> 
+						
+						
+						
 					</select>
 				</div>
 
