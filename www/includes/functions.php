@@ -279,5 +279,22 @@
 		header("Location:view_product.php?success=$success");
 	}
 
+	function userRegister($dbconn, $input){
+		$hash = password_hash($input['password'], PASSWORD_BCRYPT);
+
+	#insert data
+	$stmt = $dbconn->prepare("INSERT INTO users(firstname, lastname, email, username, hash) VALUES(:fn, :ln, :e,  :us, :h)");
+ 	# bind params
+ 	$data = [
+
+ 	':fn' => $input['fname'],
+ 	':ln' => $input['lname'],
+ 	':e' => $input['email'],
+ 	':us' => $input['username'],
+ 	':h' => $hash
+
+ 	];
+	}
+
 
 ?>
