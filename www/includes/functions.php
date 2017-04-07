@@ -279,11 +279,11 @@
 		header("Location:view_product.php?success=$success");
 	}
 
-	function userRegister($dbconn, $input){
+	function doUserRegister($dbconn, $input){
 		$hash = password_hash($input['password'], PASSWORD_BCRYPT);
 
 	#insert data
-	$stmt = $dbconn->prepare("INSERT INTO users(firstname, lastname, email, username, hash) VALUES(:fn, :ln, :e,  :us, :h)");
+	$stmt = $dbconn->prepare("INSERT INTO user(firstname, lastname, email, username, hash) VALUES(:fn, :ln, :e, :us, :h)");
  	# bind params
  	$data = [
 
@@ -294,6 +294,7 @@
  	':h' => $hash
 
  	];
+ 		$stmt->execute($data);
 	}
 
 
