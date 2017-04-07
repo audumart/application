@@ -58,24 +58,22 @@
 		$stmt->bindParam(":e", $enter['email']);
 		$stmt->execute();
 
+		$row = $stmt->fetch(PDO::FETCH_ASSOC);
+
 		$count = $stmt->rowCount();
 
-		if ($count == 1) {
-			$row = $stmt->fetch(PDO::FETCH_ASSOC);
+		if ($count !== 1 || !password_verify($enter['password'], $row['hash'])) {
 
-			if (password_verify($enter['password'], $row['hash'])) {
-				$_SESSION['id'] = $row['admin'];
-				$_SESSION['email'] = $row['email'];
-
-				header("Location:home.php");
-			}
-		else {
-			$login_error = "wrong email address or password";
-			header("Location:login.php?login_error=$login_error");
-
-		
-			}	
+			$result[] = false;	
+		} else{
+			$result[] = true;
+			$result[] = $row;
 		}
+		return $result;
+	}
+
+	function redirect($loca){
+		header("Location: " .$loca);
 	}
 	function fileUpload($up){
 
