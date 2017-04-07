@@ -19,7 +19,7 @@
         <li class="top-nav-listItem register"><a href="reg.php">Register</a></li>
         <li class="top-nav-listItem cart">
           <div class="cart-item-indicator">
-            <p>12</p>
+            
           </div>
           <a href="cart.php">Cart</a>
         </li>
