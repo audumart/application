@@ -207,8 +207,8 @@
 		$row = $state->fetch(PDO::FETCH_ASSOC);
 		$category_id = $row['category_id'];
 
-		$stmt = $dbconn->prepare("INSERT INTO products(title, author, category_id, price, year, isbn, file_path)
-											VALUES(:ti, :au, :ci, :pr, :yr, :is, :fi)");
+		$stmt = $dbconn->prepare("INSERT INTO products(title, author, category_id, price, year, isbn, file_path, flag)
+											VALUES(:ti, :au, :ci, :pr, :yr, :is, :fi, :fl)");
 		$data = [
 
 			':ti' => $add['title'],
@@ -217,6 +217,7 @@
 			':pr' => $add['price'],
 			':yr' => $add['year'],
 			':is' => $add['isbn'],
+			':fl' => $add['flag'],
 			':fi' => $destination
 
 				];
@@ -296,6 +297,34 @@
  	];
  		$stmt->execute($data);
 	}
+
+	function userLogin($dbconn, $enter){
+
+		$stmt = $dbconn->prepare("SELECT * FROM user WHERE email=:e");
+
+		#bind params
+		$stmt->bindParam(":e", $enter['email']);
+		$stmt->execute();
+
+		$row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+		$count = $stmt->rowCount();
+
+		if ($count !== 1 || !password_verify($enter['password'], $row['hash'])) {
+
+			$result[] = false;	
+		} else{
+			$result[] = true;
+			$result[] = $row;
+		}
+		return $result;
+	}
+
+	function useredirect($loca){
+		header("Location: " .$loca);
+	}
+
+
 
 
 ?>
