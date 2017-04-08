@@ -323,8 +323,23 @@
 	function useredirect($loca){
 		header("Location: " .$loca);
 	}
+	
+	function showTop($dbconn){
+		$f = "top selling";
 
+		$stmt = $dbconn->prepare("SELECT * FROM products WHERE flag=:fl");
+		
+		$stmt->bindParam(':fl', $f);
 
+		$stmt->execute();
+		
+		$row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+			
+		return $row;	
+		}
+		
+	
 
 
 ?>
