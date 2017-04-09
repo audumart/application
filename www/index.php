@@ -43,51 +43,45 @@
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
         <li class="book">
-          <a href="#"><div class="book-cover" style="background: url('uploa');background-size: contain;background-position: center;background-repeat: no-repeat;"></div></a>
-          <div class="book-price"><p></p></div>
+          <a href="#"><div class="book-cover" style="background: url('../<?php echo $row['file_path']; ?>'); 
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;">
+          </div></a>
+          <div class="book-price"><p>
+            <?php echo $row['price']; ?>
+          </p></div>
         </li>
 
         <?php } ?>
-
-        <li class="book">
-          <a href="#"><div class="book-cover" style="background: url('uploads/6271725744cssbook6.jpeg');background-size: contain;background-position: center;background-repeat: no-repeat;""></div></a>
-          <div class="book-price"><p>$110</p></div>
-        </li>
-
-        <li class="book">
-          <a href="#"><div class="book-cover" style="background: url('uploads/6819613636cssbook5.jpeg');background-size: contain;background-position: center;background-repeat: no-repeat;"></div></a>
-          <div class="book-price"><p>$65</p></div>
-        </li>
-
-        <li class="book">
-          <a href="#"><div class="book-cover"  style="background: url('uploads/758902886cssbook2.jpeg');background-size: contain;background-position: center;background-repeat: no-repeat;"></div></a>
-          <div class="book-price"><p>$70</p></div>
-        </li>
-      </ul>
     </div>
     <div class="recently-viewed-books horizontal-book-list">
       <h3 class="header">Recently Viewed</h3>
       <ul class="book-list">
         <div class="scroll-back"></div>
         <div class="scroll-front"></div>
+        <?php
+      $r = "recently viewed";
+
+      $stmt = $conn->prepare("SELECT * FROM products WHERE flag=:fl");
+      $stmt->bindParam(':fl', $r);
+
+      $stmt->execute();
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
         <li class="book">
-          <a href="#"><div class="book-cover"></div></a>
-          <div class="book-price"><p>$250</p></div>
+          <a href="#"><div class="book-cover" style="background: url('../<?php echo $row['file_path']; ?>'); 
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;">
+          </div></a>
+          <div class="book-price"><p>
+            <?php echo $row['price']; ?>
+          </p></div>
         </li>
-        <li class="book">
-          <a href="#"><div class="book-cover"></div></a>
-          <div class="book-price"><p>$50</p></div>
-        </li>
-        <li class="book">
-          <a href="#"><div class="book-cover"></div></a>
-          <div class="book-price"><p>$125</p></div>
-        </li>
-        <li class="book">
-          <a href="#"><div class="book-cover"></div></a>
-          <div class="book-price"><p>$90</p></div>
-        </li>
-      </ul>
-    </div>
+
+        <?php } ?>
+        
     
   </div>
   
