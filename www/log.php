@@ -79,6 +79,7 @@
     <div class="login-form">
       <form class="def-modal-form" id="register" action="log.php" method="POST">
         <div class="cancel-icon close-form"></div>
+
         <label for="login-form" class="header"><h3>Login</h3></label>
         
         <input type="text" name="email" class="text-field email" placeholder="Email">
