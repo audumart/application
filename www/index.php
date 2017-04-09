@@ -2,41 +2,15 @@
   
   include 'includes/db.php';
 
+  include 'includes/indexheader.php';
 
   include 'includes/functions.php';
 
+  include 'includes/indexfooter.php';
+
   $show = showTop($conn);
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link rel="stylesheet" href="style/styles.css">
-    <title>Home</title>
-</head>
-<body id="home">
-  <!-- DO NOT TAMPER WITH CLASS NAMES! -->
 
-  <!-- top bar starts here -->
-  <div class="top-bar">
-    <div class="top-nav">
-      <a href="index.php"><h3 class="brand"><span>B</span>rain<span>F</span>ood</h3></a>
-      <ul class="top-nav-list">
-        <li class="top-nav-listItem Home"><a href="index.php">Home</a></li>
-        <li class="top-nav-listItem catalogue"><a href="catalogue.php">Catalogue</a></li>
-        <li class="top-nav-listItem login"><a href="log.php">Login</a></li>
-        <li class="top-nav-listItem cart">
-          <div class="cart-item-indicator">
-            <p>12</p>
-          </div>
-          <a href="cart.php">Cart</a>
-        </li>
-      </ul>
-      <form class="search-brainfood">
-        <input type="text" class="text-field" placeholder="Search all books">
-      </form>
-    </div>
-  </div>
   <!-- main content starts here -->
   <div class="main">
     <div class="book-display">
@@ -58,21 +32,36 @@
     <div class="trending-books horizontal-book-list">
       <h3 class="header">Trending</h3>
       <ul class="book-list">
+        
+      <?php
+      $t = "Trending";
+
+      $stmt = $conn->prepare("SELECT * FROM products WHERE flag=:fl");
+      $stmt->bindParam(':fl', $t);
+
+      $stmt->execute();
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
         <li class="book">
-          <a href="#"><div class="book-cover"></div></a>
-          <div class="book-price"><p>$125</p></div>
+          <a href="#"><div class="book-cover" style="background: url('uploa');background-size: contain;background-position: center;background-repeat: no-repeat;"></div></a>
+          <div class="book-price"><p></p></div>
         </li>
+
+        <?php } ?>
+
         <li class="book">
-          <a href="#"><div class="book-cover"></div></a>
-          <div class="book-price"><p>$90</p></div>
+          <a href="#"><div class="book-cover" style="background: url('uploads/6271725744cssbook6.jpeg');background-size: contain;background-position: center;background-repeat: no-repeat;""></div></a>
+          <div class="book-price"><p>$110</p></div>
         </li>
+
         <li class="book">
-          <a href="#"><div class="book-cover"></div></a>
-          <div class="book-price"><p>$250</p></div>
+          <a href="#"><div class="book-cover" style="background: url('uploads/6819613636cssbook5.jpeg');background-size: contain;background-position: center;background-repeat: no-repeat;"></div></a>
+          <div class="book-price"><p>$65</p></div>
         </li>
+
         <li class="book">
-          <a href="#"><div class="book-cover"></div></a>
-          <div class="book-price"><p>$50</p></div>
+          <a href="#"><div class="book-cover"  style="background: url('uploads/758902886cssbook2.jpeg');background-size: contain;background-position: center;background-repeat: no-repeat;"></div></a>
+          <div class="book-price"><p>$70</p></div>
         </li>
       </ul>
     </div>
@@ -101,9 +90,4 @@
     </div>
     
   </div>
-  <!-- footer starts here-->
-  <div class="footer">
-    <p class="copyright">&copy; copyright 2017</p>
-  </div>
-</body>
-</html>
+  
