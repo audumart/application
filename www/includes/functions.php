@@ -224,6 +224,16 @@
 
 			$stmt->execute($data);
 	}
+				function getBookByID($dbconn, $bookID) {
+			$stmt = $dbconn->prepare("SELECT * FROM products WHERE book_id=:id");
+			$stmt->bindParam(':id', $book_id);
+			$stmt->execute();
+			$row = $stmt->fetch(PDO::FETCH_ASSOC);
+		
+			return $row;
+	}
+
+
 
 	function showProduct($dbconn){
 		$stmt = $dbconn->prepare("SELECT * FROM products");
@@ -339,7 +349,7 @@
 		return $row;	
 		}
 
-	
+
 		
 	
 
