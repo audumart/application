@@ -1,5 +1,7 @@
 <?php
   
+  $page_title = "Home";
+
   session_start();
   
   include 'includes/db.php';
@@ -8,7 +10,6 @@
 
   include 'includes/functions.php';
 
-  include 'includes/indexfooter.php';
 
   $show = showTop($conn);
 ?>
@@ -48,7 +49,7 @@
         $book_id = $row['book_id'];
           ?>
         <li class="book">
-          <a href="bookpreview.php?book_id=$book_id"><div class="book-cover" style="background: url('../<?php echo $row['file_path']; ?>'); 
+          <a href="<?php echo "bookpreview.php?book_id=".$row['book_id']?>"><div class="book-cover" style="background: url('../<?php echo $row['file_path']; ?>'); 
           background-size: cover;
           background-position: center;
           background-repeat: no-repeat;">
@@ -75,7 +76,7 @@
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
         <li class="book">
-          <a href="bookpreview.php?book_id=$book_id"><div class="book-cover" style="background: url('../<?php echo $row['file_path']; ?>'); 
+          <a href="<?php echo "bookpreview.php?book_id=".$row['book_id']?>"><div class="book-cover" style="background: url('../<?php echo $row['file_path']; ?>'); 
           background-size: cover;
           background-position: center;
           background-repeat: no-repeat;">
@@ -89,4 +90,10 @@
         
     
   </div>
+  <?php
+
+  include 'includes/indexfooter.php';
+
+
+  ?>
   
