@@ -41,9 +41,12 @@
 
       $stmt->execute();
 
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { 
+
+        $book_id = $row['book_id'];
+          ?>
         <li class="book">
-          <a href="#"><div class="book-cover" style="background: url('../<?php echo $row['file_path']; ?>'); 
+          <a href="bookpreview.php?book_id=$book_id"><div class="book-cover" style="background: url('../<?php echo $row['file_path']; ?>'); 
           background-size: cover;
           background-position: center;
           background-repeat: no-repeat;">
