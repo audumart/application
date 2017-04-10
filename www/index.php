@@ -1,5 +1,7 @@
 <?php
   
+  session_start();
+  
   include 'includes/db.php';
 
   include 'includes/indexheader.php';
@@ -14,7 +16,7 @@
   <!-- main content starts here -->
   <div class="main">
     <div class="book-display">
-      <div class="display-book" style="background: url('uploads/692837750hack5.jpeg');background-size: contain;background-position: center;background-repeat: no-repeat;"></div>
+      <div class="display-book" style="background: url('../<?php echo $show['file_path']; ?>');background-size: contain;background-position: center;background-repeat: no-repeat;"></div>
       <div class="info">
 
       <h2 class="book-title"><?php echo $show['title']; ?></h2>
@@ -73,7 +75,7 @@
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
         <li class="book">
-          <a href="#"><div class="book-cover" style="background: url('../<?php echo $row['file_path']; ?>'); 
+          <a href="bookpreview.php?book_id=$book_id"><div class="book-cover" style="background: url('../<?php echo $row['file_path']; ?>'); 
           background-size: cover;
           background-position: center;
           background-repeat: no-repeat;">
