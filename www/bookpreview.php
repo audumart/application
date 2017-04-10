@@ -15,23 +15,7 @@
 			$show = getBookByID($conn, $_GET['book_id']);
 		}
 
-				if(array_key_exists('submit', $_POST)) {
-			$clean = array_map('trim', $_POST);
-				$stmt = $conn->prepare("INSERT INTO preview(user_id, book_id, review) VALUES(:us, :bk, :re,");
-				$data = [':us' => $user_id,
-						 ':bk' => $show['book_id'],
-						 're' => $clean['review'],
-						];
-				$stmt->execute($data);
-		}
-			$errors = [];
-		if(array_key_exists('enter', $_POST)) {
-			if(empty($_POST['quantity'])) {
-				$errors['quantity'] = "You have not chosen any amount!";
-			} else {
-				redirect("cart.php");
-			}
-		}
+				
 		
 			
 			
