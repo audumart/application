@@ -349,34 +349,7 @@
 		return $row;	
 		}
 
-			function comment($dbconn, $bookid) {
-					$result = "";
-			$stmt = $dbconn->prepare("SELECT * FROM preview WHERE book_id=:bk");
-			$stmt->bindParam(':bk', $bookid);
-			$stmt->execute();
-			while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-				$statement = $dbconn->prepare("SELECT firstname, lastname FROM user WHERE user_id=:ui");
-					
-					$statement->bindParam(":di", $row['user_id']);
-					$statement->execute();
-					$row1 = $statement->fetch(PDO::FETCH_ASSOC);
-					$fname = $row1['firstname'];
-					$lname = $row1['lastname'];
-					$f = substr($fname, 0, 1);
-					$l = substr($lname, 0, 1);
-		 $result .= '<li class="review">
-         	 		<div class="avatar-def user-image">
-            		<h4 class="user-init">'.$f.$l.'</h4>
-         	 		</div>
-         	 		<div class="info">
-            		<h4 class="username">'.$fname." ".$lname.'</h4>
-            		<p class="comment">'.$row['review'].'</p>
-          			</div>
-        			</li>';
-			}
-			return $result;
-		}
-
+			
 
 		
 	
